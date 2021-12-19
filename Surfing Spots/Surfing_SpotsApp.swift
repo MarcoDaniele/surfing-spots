@@ -11,7 +11,7 @@ import SwiftUI
 struct Surfing_SpotsApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView(cities: [:])
         }
     }
 }
