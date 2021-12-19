@@ -8,25 +8,28 @@
 import SwiftUI
 
 struct WeatherScreen: View {
-    let cities: [City: Weather]
+    @StateObject var viewModel = WeatherViewModelImpl(service: WeatherServiceImpl())
     
     var body: some View {
-        List([City](cities.keys)) { city in
-            CityCell(city: city, weather: cities[city]!)
-            .listRowSeparator(.hidden)
-            .listRowInsets(.none)
+        List([City](viewModel.weatherInfo.keys)) { city in
+            CityCell(city: city, weather: viewModel.weatherInfo[city]!)
+                .listRowSeparator(.hidden)
+                .listRowInsets(.none)
         }
         .listStyle(.plain)
         .navigationTitle("Surfing Spots")
+        .onAppear(perform: {
+            Task {
+                await viewModel.getCities()
+            }
+        })
     }
 }
 
 struct WeatherScreen_Previews: PreviewProvider {
-    static let mockCities: [City: Weather] = [City(name: "Riccione", image: UIImage(named: "city1")!): Weather(temperature: 30), City(name: "Miami", image: UIImage(named: "city2")!): Weather(temperature: 30), City(name: "Los Angeles", image: UIImage(named: "city3")!): Weather(temperature: 30)]
-    
     static var previews: some View {
         Group {
-            WeatherScreen(cities: mockCities)
+            WeatherScreen()
         }
     }
 }
