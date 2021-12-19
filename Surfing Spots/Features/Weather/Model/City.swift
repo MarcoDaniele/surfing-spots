@@ -12,3 +12,12 @@ struct City: Identifiable, Hashable, Equatable {
     let name: String
     let image: UIImage
 }
+
+extension City {
+    struct CitiesResponse: Decodable {
+        struct CityObject: Decodable {
+            var name: String
+        }
+        var cities: [CityObject]
+    }
+}

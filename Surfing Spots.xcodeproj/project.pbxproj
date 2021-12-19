@@ -20,6 +20,8 @@
 		619E669A276F5F4500496096 /* WeatherScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 619E6699276F5F4500496096 /* WeatherScreen.swift */; };
 		619E669F276F612200496096 /* WeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 619E669E276F612200496096 /* WeatherViewModel.swift */; };
 		619E66A2276F624400496096 /* WeatherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 619E66A1276F624400496096 /* WeatherService.swift */; };
+		619E66A5276F899C00496096 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 619E66A4276F899C00496096 /* Extensions.swift */; };
+		619E66A7276F89A600496096 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 619E66A6276F89A600496096 /* Endpoint.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +58,9 @@
 		619E6699276F5F4500496096 /* WeatherScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherScreen.swift; sourceTree = "<group>"; };
 		619E669E276F612200496096 /* WeatherViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewModel.swift; sourceTree = "<group>"; };
 		619E66A1276F624400496096 /* WeatherService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherService.swift; sourceTree = "<group>"; };
+		619E66A4276F899C00496096 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		619E66A6276F89A600496096 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
+		619E66A8276F8B8100496096 /* Surfing-Spots-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Surfing-Spots-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +91,7 @@
 		619E6658276F4DDE00496096 = {
 			isa = PBXGroup;
 			children = (
+				619E66A8276F8B8100496096 /* Surfing-Spots-Info.plist */,
 				619E6663276F4DDE00496096 /* Surfing Spots */,
 				619E6674276F4DE000496096 /* Surfing SpotsTests */,
 				619E667E276F4DE000496096 /* Surfing SpotsUITests */,
@@ -106,6 +112,7 @@
 		619E6663276F4DDE00496096 /* Surfing Spots */ = {
 			isa = PBXGroup;
 			children = (
+				619E66A3276F898D00496096 /* Network */,
 				619E668F276F5E1C00496096 /* Features */,
 				619E6664276F4DDE00496096 /* Surfing_SpotsApp.swift */,
 				619E6666276F4DDE00496096 /* ContentView.swift */,
@@ -199,6 +206,15 @@
 				619E66A1276F624400496096 /* WeatherService.swift */,
 			);
 			path = Service;
+			sourceTree = "<group>";
+		};
+		619E66A3276F898D00496096 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				619E66A4276F899C00496096 /* Extensions.swift */,
+				619E66A6276F89A600496096 /* Endpoint.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -332,8 +348,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				619E66A2276F624400496096 /* WeatherService.swift in Sources */,
+				619E66A5276F899C00496096 /* Extensions.swift in Sources */,
 				619E669A276F5F4500496096 /* WeatherScreen.swift in Sources */,
 				619E6667276F4DDE00496096 /* ContentView.swift in Sources */,
+				619E66A7276F89A600496096 /* Endpoint.swift in Sources */,
 				619E6665276F4DDE00496096 /* Surfing_SpotsApp.swift in Sources */,
 				619E669F276F612200496096 /* WeatherViewModel.swift in Sources */,
 				619E6695276F5E8500496096 /* City.swift in Sources */,
@@ -501,6 +519,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Surfing Spots/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Surfing-Spots-Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -529,6 +548,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Surfing Spots/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Surfing-Spots-Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
