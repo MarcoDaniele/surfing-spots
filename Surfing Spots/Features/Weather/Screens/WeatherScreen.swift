@@ -20,6 +20,7 @@ struct WeatherScreen: View {
         }
         .listStyle(.plain)
         .navigationTitle("Surfing Spots")
+        .animation(.default, value: viewModel.weatherInfo)
         .onAppear(perform: {
             Task {
                 await viewModel.getCities()
