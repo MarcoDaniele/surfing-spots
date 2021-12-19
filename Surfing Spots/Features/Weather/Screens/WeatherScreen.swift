@@ -10,6 +10,8 @@ import SwiftUI
 struct WeatherScreen: View {
     @StateObject var viewModel = WeatherViewModelImpl(service: WeatherServiceImpl())
     
+    let timer = Timer.publish(every: 3, on: .main, in: .common).autoconnect()
+
     var body: some View {
         List([City](viewModel.weatherInfo.keys)) { city in
             CityCell(city: city, weather: viewModel.weatherInfo[city]!)
@@ -23,6 +25,11 @@ struct WeatherScreen: View {
                 await viewModel.getCities()
             }
         })
+        .onReceive(timer) { _ in
+            Task {
+                await viewModel.getWeatherUpdates()
+            }
+        }
     }
 }
 
