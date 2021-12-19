@@ -11,16 +11,23 @@ struct WeatherScreen: View {
     @StateObject var viewModel = WeatherViewModelImpl(service: WeatherServiceImpl())
     
     let timer = Timer.publish(every: 3, on: .main, in: .common).autoconnect()
-
+    
     var body: some View {
-        List(sortWeatherInfo(viewModel.weatherInfo)) { city in
-            CityCell(city: city, weather: viewModel.weatherInfo[city]!)
-                .listRowSeparator(.hidden)
-                .listRowInsets(.none)
+        Group {
+            if(viewModel.weatherInfo.isEmpty) {
+                ProgressView()
+            }
+            else {
+                List(sortWeatherInfo(viewModel.weatherInfo)) { city in
+                    CityCell(city: city, weather: viewModel.weatherInfo[city]!)
+                        .listRowSeparator(.hidden)
+                        .listRowInsets(.none)
+                }
+                .listStyle(.plain)
+                .animation(.default, value: viewModel.weatherInfo)
+            }
         }
-        .listStyle(.plain)
         .navigationTitle("Surfing Spots")
-        .animation(.default, value: viewModel.weatherInfo)
         .onAppear(perform: {
             Task {
                 await viewModel.getCities()
