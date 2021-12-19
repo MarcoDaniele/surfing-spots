@@ -18,8 +18,9 @@ struct WeatherScreen: View {
                 ProgressView()
             }
             else {
-                List(sortWeatherInfo(viewModel.weatherInfo)) { city in
-                    CityCell(city: city, weather: viewModel.weatherInfo[city]!)
+                List(viewModel.weatherInfo.sorted(by: {$0.value.temperature > $1.value.temperature}), id: \.key) {
+                    (city, weather) in
+                    CityCell(city: city, weather: weather)
                         .listRowSeparator(.hidden)
                         .listRowInsets(.none)
                 }
@@ -38,12 +39,6 @@ struct WeatherScreen: View {
                 await viewModel.getWeatherUpdates()
             }
         }
-    }
-    
-    func sortWeatherInfo(_ weatherInfo: [City: Weather]) -> [City] {
-        return weatherInfo.keys.sorted(by: {
-            weatherInfo[$0]!.temperature > weatherInfo[$1]!.temperature
-        })
     }
 }
 

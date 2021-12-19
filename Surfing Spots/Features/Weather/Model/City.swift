@@ -7,8 +7,7 @@
 
 import UIKit
 
-struct City: Identifiable, Hashable, Equatable {
-    let id = UUID()
+struct City: Hashable, Equatable {
     let name: String
     let image: UIImage
 }
