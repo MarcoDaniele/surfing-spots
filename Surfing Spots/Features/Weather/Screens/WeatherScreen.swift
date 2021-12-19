@@ -13,7 +13,7 @@ struct WeatherScreen: View {
     let timer = Timer.publish(every: 3, on: .main, in: .common).autoconnect()
 
     var body: some View {
-        List([City](viewModel.weatherInfo.keys)) { city in
+        List(sortWeatherInfo(viewModel.weatherInfo)) { city in
             CityCell(city: city, weather: viewModel.weatherInfo[city]!)
                 .listRowSeparator(.hidden)
                 .listRowInsets(.none)
@@ -30,6 +30,12 @@ struct WeatherScreen: View {
                 await viewModel.getWeatherUpdates()
             }
         }
+    }
+    
+    func sortWeatherInfo(_ weatherInfo: [City: Weather]) -> [City] {
+        return weatherInfo.keys.sorted(by: {
+            weatherInfo[$0]!.temperature > weatherInfo[$1]!.temperature
+        })
     }
 }
 
